@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage[margin = 1 in]{geometry}
+\usepackage[parfill]{parskip}
+\input{Preamble.tex}
+
+
+\begin{document}
+
+\begin{flushright}
+Lauren Mangibin
+\end{flushright}
+
+\begin{center}
+    \underline{\textbf{Project Euler \#119}}
+\end{center}
+
+Problem:
+
+The number 512 is interesting because it is equal to the sum of its digits raised to some power: 5+1+2 = 8, and $8^3$ = 512. Another example of a number with this property is 614656 = $28^4$.
+
+We shall define $a_n$ to be the $n$th term of this sequence and insist that a number must contain at least two digits to have a sum.
+
+You are given that $a_2$ = 512 and $a_{10}$ = 614656.
+
+Find $a_{30}$.
+
+Answer and Explanation:
+248155780267521\\
+
+\hspace{5mm} This series includes numbers whose digits add to a number that, when raised a power, equal the original number. To create this series, I would first need to raise a set of bases to a set of exponents to produce a list of possibilities for the series. Next, I would need to filter out the numbers that did not conform to this rule. Afterwards, I would need to sort the numbers in least to greatest to find the $n$th term\\
+
+\hspace{5mm} $a_{30}$ would need to be a considerably large number, so I chose the range of 2 to 100 for the base and 2 to 10 for the exponent, giving me a possibility of numbers from 4 to $100^{10}$. If needed, I could increase the range of both the base and/or the exponents. \\
+
+Through the program, I was able to create this list, filter it out, and choose the 30th number.
+
+
+
+Code:
+    \begin{verbatim}
+def digitSum(n):                         #command takes the number and returns 
+return sum(map(int, str(n)))             #the sum of the digits
+
+
+a = []                                   #creates a list
+n = 30                                   #number in list wanted
+for base in range(2, 100):               #bases between 2-100
+    for exponent in range(2, 10):        #exponents between 2-10
+        product = base ** exponent 
+        if digitSum(product) == base:    #filtering out numbers
+            a.append(p)
+a.sort()                                 #sorting from least to greatest
+
+print (a[n-1])
+
+  \end{verbatim}
+\end{document}
